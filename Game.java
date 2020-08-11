@@ -1,5 +1,5 @@
 package game;
-//https://www.mediafire.com/file/h3qvtt4lja0njvy/Zombie.rar/file
+//
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -39,7 +39,7 @@ public class Game extends Canvas implements Runnable,KeyListener
 	private String timeStr;
 	public int k;
 	public int timeToRespawn = 10*1000;
-	public int timeToRespawnDelay = 30;
+	public int timeToRespawnDelay = 60;
 	private boolean spawnEnemy;
 	private int x,y;
 	
@@ -94,13 +94,13 @@ public class Game extends Canvas implements Runnable,KeyListener
 	public void tick() 
 	{
 		player.tick();
-		if(time >= timeToRespawn+k && time <= timeToRespawn+timeToRespawnDelay+k) 
+		if(time > timeToRespawn+timeToRespawnDelay+k) 
 		{
-			spawnEnemy = true;
 			k += timeToRespawn;
 		}
-		else if(time > timeToRespawn+timeToRespawnDelay+k) 
+		else if(time >= timeToRespawn+k && time <= timeToRespawn+timeToRespawnDelay+k) 
 		{
+			spawnEnemy = true;
 			k += timeToRespawn;
 		}
 		for(int i = 0; i < enemies.size(); i++) 
@@ -209,6 +209,7 @@ public class Game extends Canvas implements Runnable,KeyListener
 	}
 	public void restart() 
 	{
+		k = -10000;
 		enemies.clear();
 		timeStart = System.currentTimeMillis();
 		player.restart();
