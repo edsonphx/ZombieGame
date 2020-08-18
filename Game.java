@@ -94,6 +94,10 @@ public class Game extends Canvas implements Runnable,KeyListener
 	}
 	public void tick() 
 	{
+		if(hasFocus()) 
+		{
+		frame.requestFocus();
+		}
 		player.tick();
 		if(time > timeToRespawn+timeToRespawnDelay+k) 
 		{
