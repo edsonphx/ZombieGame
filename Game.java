@@ -62,6 +62,7 @@ public class Game extends Canvas implements Runnable,KeyListener
 		frame.addKeyListener(this);
 		frame.add(this);
 		frame.setResizable(false);
+		frame.setSize(WIDHT*SCALE,HEIGHT*SCALE);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
 		frame.pack();
